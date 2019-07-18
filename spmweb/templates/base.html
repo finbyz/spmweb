@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!-- Built on Frappe. https://frappe.io/ -->
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %} {{ seo_title or title }} {% endblock %}</title>
+	<meta name="generator" content="frappe">
+	{% if keywords %}<meta name="keywords" content="{{ keywords }}">{% else %}<meta name="keywords" content="Digital Inkjet Printing Machine Gujarat, Digital Flex Printing Machine, Flex Printing Machine Manufacturer, Flex Printing Machine Supplier, Flex Printing Machine Exporter, Flex Printing Machine India, Flex Printing Machine Ahmedabad, Flex Printing Machine Maharashtra, Flex Printing Machine Andhra Pradesh, Flex Banner Printing Machine, High Speed Flex Printing Machine, High Quality Flex Printing Machine, Economical Flex Printing Machine, Digital Inkjet Printing Machine Manufacturer, Digital Inkjet Printing Machine Ahmedabad">{% endif %}
+	{% if small_description %}<meta name="description" content="{{ small_description or blog_intro}}" />{% else %}<meta name="description" content="Siddharth Printing Machines Pvt. Ltd. is One the best manufacturer and exporter of Flex Printing Machine, Flex Printing Machine Manufacturer, Economical Flex Printing Machine, High Quality Flex Printing Machine, Digital Inkjet Printing Machine Ahmedabad, Digital Inkjet Printing Machine Gujarat">{% endif %}
+	{% if (doctype == "Web Page" and name == "index") or (doctype == "Web Form" and name == "contact") %}
+	<script type="application/ld+json">
+	<link rel="canonical" href="https://www.sidharthmachineries.com/" />
+	{"@context":"http://schema.org/","@type":"Organization","name":"SPMPL","legalName":"Siddhart Printing Machines Private Limited","url":" http://www.siddharthprintingmachines.com/","description":"Leading distributor of Macart Pvt. Ltd.","sameAs":["https://www.facebook.com/siddharthprintingmachines","https://twitter.com/siddharth_print","https://www.youtube.com/user/sidharthmachineries"],"logo":"http://www.siddharthprintingmachines.com/svg/siddharth-logo.svg","address":{"@type":"PostalAddress","addressLocality":"Ahmedabad","addressRegion":"Gujarat","streetAddress":"B 105, Titanium City Center, Prahladnagar Road, Near IOC Petrol Pump, Ahmedabad, India - 380015."},"openingHours":"Mo, Tu, We, Th, Fr, Sa 10.00:00-19:00","geo":{"@type":"GeoCoordinates","latitude":"23.011825","longitude":"72.523559"},"contactPoint":{"@type":"ContactPoint","contactType":"sales","telephone":"+91 9725801515","email":"sales@sidharthmachineries.com"}}
+	</script>
+	{% endif %}
+	{% if doctype == "Job Opening" and description %}
+	<script type="application/ld+json">
+	{"@context":"http://schema.org","@type":"JobPosting","title":"{{ title }}","hiringOrganization":{"@type":"Organization","name":"Siddhart Printing Machines Private Limited","sameAs":"http://www.siddharthprintingmachines.com/","logo":"http://www.siddharthprintingmachines.com/svg/siddharth-logo.svg","email":"info@sidharthmachineries.com"},"jobLocation":{"@type":"Place","address":{"@type":"PostalAddress","name":"Siddhart Printing Machines Private Limited","addressLocality":"Ahmedabad","addressRegion":"Gujarat","addressCountry":"India","streetAddress":"B 105, Titanium City Center, Prahladnagar Road, Near IOC Petrol Pump, Ahmedabad, India - 380015."}},"datePosted":"{{ modified }}","description":"<h2><strong>Job Description</strong><h2><br><p>{{ description }}</p><br><h2><strong>Key Skills</strong></h2><p>{{ skills }}</p><br><br><h2><strong>About Sidhharth Printing</strong></h2><p>We welcome innovative young enthusiast to create the future they dream of. The drive and enterprising spirit of our employees is promoted by a motivational working atmosphere, performance oriented remuneration and attractive further training and development opportunities.</p>","employmentType":"Full-Time"}
+	</script>
+	{% endif %}
+	{% if doctype == "Item" and description %}
+	<script type="application/ld+json">
+	{"@context":"https://schema.org/","@type":"Product","name":"{{ title }}","image":"{{ image }}","description":"{{ small_description }}","brand":{"@type":"Thing","name":"https://erp.spmpl.in/svg/siddharth-logo.svg"},"review":{"@type":"Review","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"author":{"@type":"Person","name":"Kishor Pareek"}},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"8"}}
+	</script>
+	{% endif %}
+	{% block favicon %}
+	<link rel="shortcut icon"
+		href="{{ (favicon or "/assets/frappe/images/favicon.png") | abs_url }}"
+		type="image/x-icon">
+	<link rel="icon"
+		href="{{ (favicon or "/assets/frappe/images/favicon.png") | abs_url }}"
+		type="image/x-icon">
+    {% endblock %}
+	{%- block head -%}
+		
+		{% if head_html is defined -%}
+		{{ head_html or "" }}
+		{%- endif %}
+		<!-- <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+		{%- for link in web_include_css %}
+		{% if link not in ["assets/frappe/css/bootstrap.css","assets/erpnext/css/website.css","assets/css/frappe-web.css"] %}
+			<link type="text/css" rel="stylesheet" href="{{ link|abs_url }}">
+		{%- endif -%}
+		{%- endfor -%}
+	    {%- block head_include %}{{ head_include or "" }}{% endblock -%}
+		{%- block style %}{%- endblock -%}
+	{%- endblock -%}
+	<script type="text/javascript" >
+		window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+		ga('create', 'UA-127323417-1', 'auto');
+		// Plugins
+		
+		ga('send', 'pageview');
+	</script>
+	<script async src="https://www.google-analytics.com/analytics.js"></script>
+    <script>
+		window.frappe = {};
+		frappe.ready_events = [];
+		frappe.ready = function(fn) {
+			frappe.ready_events.push(fn);
+		}
+		window.dev_server = {{ dev_server }};
+		window.socketio_port = {{ frappe.socketio_port }};
+    </script>
+</head>
+{% block body %}
+<body data-path="{{ path }}">
+	<div class="main-section">
+		<div>
+			<header>
+			{%- block banner -%}
+				{% include "templates/includes/banner_extension.html" ignore missing %}
+				{% if banner_html -%}
+				<div class="container">
+					<div class='banner'>
+						{{ banner_html or "" }}
+					</div>
+				</div>
+				{%- endif %}
+			{%- endblock -%}
+
+			{%- block navbar -%}
+                {% include "templates/includes/navbar/navbar.html" %}
+            {%- endblock -%}
+			</header>
+
+            <div class="container-fluid pl-0 pr-0">
+                <div data-html-block="hero">
+				{%- block hero -%}{%- endblock -%}
+                </div>
+                <div class="main-content">
+                {% block content %}{% endblock %}
+                </div>
+            </div>
+			{%- if footer is defined -%}
+			<footer class="page-footer">
+				<div class="container-fluid">
+					{{ footer }}
+				</div>
+			</footer>
+			{%- endif -%}
+		</div>
+		<div>
+			{%- block footer -%}{% include "templates/includes/footer/footer.html" %}{%- endblock -%}
+		</div>
+	</div>
+	{% block base_scripts %}
+	<!-- js should be loaded in body! -->
+	<script type="text/javascript"
+         src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+         </script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.slim.js"></script>
+	<script type="text/javascript"
+		src="/assets/js/frappe-web.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<!-- <script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script> -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	{% endblock %}
+    {%- if js_globals is defined %}
+    <script>
+    {%- for key, value in js_globals.iteritems() %}
+    window.{{ key }} = "{{ value[0] }}";
+    {%- endfor -%}
+    </script>
+    {% endif -%}
+	{%- for link in web_include_js %}
+	<script type="text/javascript" src="{{ link|abs_url }}"></script>
+	{%- endfor -%}
+	{% if name != "login"%}
+	  <script type="text/javascript" src="/assets/spmweb/js/combine.min.js"></script>
+	  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+	  <script type="text/javascript" src="/assets/spmweb/js/splitline.js"></script>
+	  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/debug.addIndicators.min.js"></script>
+      <script type="text/javascript" src="/assets/spmweb/js/spm.js"></script>
+	   {% endif %}
+    {%- block script %}{%- endblock %}
+	<!-- csrf_token -->
+    {%- block body_include %}{{ body_include or "" }}{% endblock -%}
+</body>
+{% endblock %}
+</html>

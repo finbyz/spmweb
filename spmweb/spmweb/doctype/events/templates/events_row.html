@@ -1,0 +1,13 @@
+<!-- this is a sample default list template -->
+
+
+{%- if doc.image -%}
+<div class="col-md-4 col-sm-4 col-12 category-filter all {{doc.event_category}} spm-fadeinup">
+	<figure class="effect-bubba">
+        <img src="{{ image }}" height="auto" width="auto" alt="{{ doc.title }}" title="{{ doc.title }}">
+        <figcaption>
+            <h4 class="event-title bold">{{ doc.event_title }}</h4>
+        </figcaption>
+    </figure>
+</div>
+{%- endif -%}

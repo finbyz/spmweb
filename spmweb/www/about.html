@@ -1,0 +1,110 @@
+{% extends "templates/web.html" %}
+
+{% block title %}Flex Printing Machine,Konica Flex Printing Machine Manufacturer{% endblock %}
+{% block page_sidebar %}
+{% include "templates/pages/web_sidebar.html" %}
+{% endblock %}
+{% block page_content %}
+
+<article itemscope itemtype ="http://schema.org/AboutPage" class="about-content">
+	<div itemprop="description" class="container mt-150">
+	{{ doc.company_introduction or """<p>Some Introduction about your company that you would
+			like your website visitor to know.
+			More people than you think will read your About page.
+			People always like to know who the are doing business with.
+			Be authentic and avoid using jargon like 'value added services' etc.
+			Be sure to update your company history and
+			list of key team members in Website > About Us Settings</p>""" }}
+	</div>
+	{%- if doc.middle_content -%}{{ doc.middle_content }}{%- endif-%}
+	{% if doc.get({"doctype":"Company History"}) %}
+	<div class="text-center pb-20 title-underline mt-150">
+		<div class="heading text-center pb-20 mt-10">
+			<h2 class="t-blue text-anim heading-title">{{ doc.company_history_heading or "Company History" }}</h2>
+		<div class="heading-line spm-fadeinup">
+			<span class="short-line"></span> <span class="long-line"></span>
+		</div>
+	</div>
+	</div>
+	<div class="container">
+		<div class="timeline">
+		{% for d in doc.get({"doctype":"Company History"}) %}	
+			<div class="container {{ loop.cycle('left', 'right') }}">
+				<div class="timeline-icon">
+					<img itemtype="image" alt="{{ d.title }}" title="{{ d.title }}" src="{{ d.image }}" class="spm-zoomin" alt="spm-icon">
+				</div>
+				<div class="content spm-fadeinup">
+				  	<h3 class="t-blue text-anim">{{ d.year }}</h3>
+				  	<h4 class="text-anim">{{ d.title }}</h4>
+				  	<p class="text-anim">{{ d.highlight }}</p>
+				</div>
+			</div>
+		{% endfor %}
+		</div>
+	</div>
+	{% endif %}
+	
+	{% if doc.get({"doctype":"About Us Team Member"}) %}
+	<section id="team-spm">
+		<div class="heading text-center pb-20 mt-50">
+			<h2 class="t-blue text-anim heading-title">
+				{{ doc.team_members_heading or "Team Members" }}
+			</h2>
+			<div class="heading-line">
+				<span class="short-line"></span> <span class="long-line"></span>
+			</div>
+		</div>
+	
+	<div class="container team">
+		<div class="row row-flex" itemscope itemtype="http://schema.org/Person">
+			<div class="col-md-12">
+				<div class="owl-carousel owl-theme owl-loaded carousel-team">
+					<div class="owl-stage-outer">
+							<div class="owl-stage">
+					{% for d in doc.get({"doctype":"About Us Team Member"}) %}
+					<div class="owl-item p-20">
+						<div class="team-member">
+							<figure>
+								{% if d.image_link %}
+								<img src="{{ d.image_link }}" alt="{{ d.full_name }}" title="{{ d.full_name }}" itemprop="image" class="member-img" height="250">
+								{% else %}
+									<img src="/img/person-image.jpg" alt="{{ d.full_name }}" title="{{ d.full_name }}" style="" itemprop="image" class="member-img"height="250">
+								{% endif %}
+								
+								<figcaption>
+									<p itemprop="description" class="about_bio">{{ d.bio }}</p>
+								</figcaption>
+							</figure>
+							<h3 class="text-center text-anim mt-10" itemprop="name">{{ d.full_name }}</h3>
+							<h5 class="text-center text-anim">{{ d.designation or '' }}</h5>
+						</div>
+					<!-- <span class="mg-bottom col-md-6 col-sm-6 col-xs-12">
+						<div class="col-md-4 col-sm-4 col-xs-4 ">
+							<div>
+							{% if d.image_link %}
+								<img src="{{ d.image_link }}" alt="{{ d.full_name }}" title="{{ d.full_name }}" itemprop="image" class="grayscale-img" height="185" width="160">
+							{% else %}
+								<img src="/img/person-image.jpg" alt="{{ d.full_name }}" title="{{ d.full_name }}" style="" itemprop="image" class="grayscale-img" height="185" width="160">
+							{% endif %}
+							</div>
+						</div>
+						<div class="col-md-8 col-sm-8 col-xs-8">
+							<h3 style="margin-top:-3px" itemprop="name">{{ d.full_name }}</h3>
+							<h5>{{ d.designation }}</h5>
+							<p itemprop="description" class="about_bio">{{ d.bio }}</p>
+						</div>
+					</span> -->
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+	{% endif %}
+	{{ doc.footer or "" }}
+	
+</article>
+{% endblock %}

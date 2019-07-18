@@ -1,0 +1,41 @@
+<section class="mt-150">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				{%- set group = [] -%}
+				{%- for d in doc -%}
+					{%- if d.item_group not in group -%}
+						{%- set _ = group.append(d.item_group) -%}		
+					{%- endif -%}
+				{%- endfor -%}
+				<div class="spmbutton-grid">
+					<button type="button" class="spmbutton bg-blue filter" data-rel="all"><span>All</span></button>
+					{%- for t in group -%}
+						<button type="button" class="bg-blue spmbutton filter" data-rel="{{t}}">
+							<span>{{t}}</span>
+						</button>
+					{%- endfor -%}
+				</div>
+			</div>
+		</div>
+		<div class="row mt-100">
+		{%- for d in doc -%}
+		{%- if d.image -%}
+		<div class="col-md-4 col-sm-3 col-12 category-filter all {{d.item_group}}">
+			<a href="{{d.route}}">
+			<div class="product-img">
+			<img src="{{ d.image }}" height="auto" width="auto" alt="{{ d.name }}" title="{{ d.name }}">	
+				<div class='item-info mt-10'>
+					<p class="text-center">{{ d.item_name }}</p>
+				</div>
+			<div class="product-explore">
+				<div class=""><button type="button" class="spmbutton"><span>EXPLORE</span></button></div>
+			</div>
+			</div>
+			</a>	
+		</div>
+		{%- endif -%}
+		{%- endfor -%}
+		</div>
+	</div>
+</section>

@@ -1,0 +1,38 @@
+<section class="mt-100 mb-100">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="heading text-center pb-20">
+					<h2 class="text-anim heading-title">EVENTS</h2>
+					<div class="heading-line spm-fadeinup">
+						<span class="short-line"></span> <span class="long-line"></span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="owl-carousel owl-theme owl-loaded" id="event-slider">
+					<div class="owl-stage-outer">
+						<div class="owl-stage">
+							{% set data = frappe.get_all('Events', fields=['name', 'event_title', 'image','route'],
+							filters={'published': 1}) %}
+							{%- for d in data -%}
+								{%- if d.image-%}
+								<div class="owl-item p-20">
+									<div class="row row-flex">
+										<div class="col-md-6"><img alt="{{ d.name }}" src="{{d.image}}" title="{{ d.event_title }}"></div>
+										<div class="col-md-6 text-center">
+											<div class="v-align-p">
+												<h3 class="text-anim v-align-c">{{ d.event_title }}</h3>
+											</div>
+										</div>
+									</div>
+								</div>
+								{%- endif -%}
+							{%- endfor -%}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

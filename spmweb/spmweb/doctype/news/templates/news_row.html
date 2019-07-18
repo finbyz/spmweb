@@ -1,0 +1,51 @@
+<div class="col-12 col-sm-6 col-lg-4">
+  	<div class="example-1 news-card spm-news mt-10 mb-10 spm-fadeinup">
+	    <div class="wrapper">
+		    <div class="date">
+		    	<!-- <span class="day">12</span> -->
+		        <span class="month">{{ frappe.utils.get_datetime(published_on).strftime("%b") }}</span>
+		        <span class="year">{{ frappe.utils.get_datetime(published_on).strftime("%Y") }}</span>
+		    </div>
+		    <div>
+		    	<img src="{{ doc.image or '' }}" alt="{{ news_title }}" title="{{ news_title }}" height="250" width="auto" class="rounded-border">
+		    </div>
+	      	<div class="data">
+	        	<div class="news-content">
+	          		<h4 class="title t-blue">{{ doc.news_title or '' }}</h4>
+	          		{% if news_intro %}
+		          		<p class="text">
+		          			{{ news_intro or '' }}
+		          		</p>
+	          		{% endif %}
+	      		</div>
+	    	</div>
+	  	</div>
+	</div>
+</div>
+
+<!-- <div class="item m-10">
+	<div class="p-4 spm-news">
+		<div class="card border-info">
+			<div class="card-body">
+				<h4 class="pb-0 bold card-title">{{ doc.title }}</h4>
+				<p class="pt-0 bb-white pb-20 card-text border-bottom border-info">
+					{{ frappe.utils.get_datetime(published_on).strftime("%b, %Y") }}
+					{% if location %}
+					 | {{ location }}
+					{% endif %}
+				</p>
+			</div>
+			<div class="card-img-bottom">
+				<span class="pt-20">
+					<img src="{{ doc.image or '' }}" alt="{{ title }}" title="{{ title }}" height="180" width="240" class="rounded-border">
+				</span>
+			</div>
+			<div class="card-footer">
+				<p class="pt-10 text-justify">
+					{{ news_intro or '' }}
+				</p>
+			</div>
+		</div>
+	</div>
+</div> -->
+<!-- this is a sample default list template -->

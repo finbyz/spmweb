@@ -1,0 +1,28 @@
+
+{% if sub_title %}
+<h4 class="text-muted">{{ sub_title }}</h4>
+{% endif %}
+{% if not result -%}
+    <div class="text-muted no-results" style="min-height: 300px;">
+				<i class="mega-octicon octicon-telescope"></i>
+    		{{ no_result_message or _("Nothing to show") }}
+    </div>
+{% else %}
+<div class="container mt-150">
+    <div class="row">
+        <div class="col-md-12 justify-content-center mb-10 event-category-main">
+            <div class="spmbutton-grid">
+                <button type="button" class="spmbutton filter bg-blue spm-fadeinup" data-rel="all">
+                        <span>ALL</span>
+                </button>
+                {% for category in event_category %}
+                {% set title = frappe.db.get_value("Event Category",{ 'name':category.name },'title') %}
+                    <button type="button" class="spmbutton filter parent-category bg-blue spm-fadeinup" data-rel="{{ category.name }}">
+                            <span>{{ title }}</span>
+                    </button>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{%- endif %}

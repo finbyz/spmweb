@@ -1,0 +1,51 @@
+<section class=" mt-150">
+	<div class="pos-rel">
+		<div class="row-background background-element">
+			<div class="background-wrapper">
+				<div class="background-inner async-done"></div>
+				<div class="block-bg-overlay style-color-bg"></div>
+			</div>
+		</div>
+		<div class="wave-svg-parent pos-rel">
+			<svg class="wave-svg" height="24px" preserveaspectratio="none" version="1.1" viewbox="0 0 240 24" width="240px" x="0px" y="0px">
+			<path d="M240,24V0c-51.797,0-69.883,13.18-94.707,15.59c-24.691,2.4-43.872-1.17-63.765-1.08 c-19.17,0.1-31.196,3.65-51.309,6.58C15.552,23.21,4.321,22.471,0,22.01V24H240z" fill="#ffffff" fill-opacity="0.33"></path>
+			<path d="M240,24V2.21c-51.797,0-69.883,11.96-94.707,14.16 c-24.691,2.149-43.872-1.08-63.765-1.021c-19.17,0.069-31.196,3.311-51.309,5.971C15.552,23.23,4.321,22.58,0,22.189V24h239.766H240 z" fill="#ffffff" fill-opacity="0.33"></path>
+			<path d="M240,24V3.72c-51.797,0-69.883,11.64-94.707,14.021c-24.691,2.359-43.872-3.25-63.765-3.17 c-19.17,0.109-31.196,3.6-51.309,6.529C15.552,23.209,4.321,22.47,0,22.029V24H240z" fill="#ffffff"></path></svg>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="text-center">
+					<div class="heading heading-product text-center pb-20 mt-0">
+						<h2 class="t-white text-anim heading-title">PRODUCTS</h2>
+						<div class="heading-line spm-fadeinup">
+							<span class="short-line"></span> <span class="long-line"></span>
+						</div>
+					</div>
+					<p class="sub-title text-center bold t-white spm-fadeinup">We as distributors of MACART EQUIPMENT PVT LTD. represent its entire range of Solvent Printers, Eco-Solvent Printers, Inkjet Printers, UV-Flatbed, UV-Roll to Roll &amp; Special purpose Digital Printing Machines.</p>
+				</div>
+				<div class="owl-carousel owl-theme owl-loaded" id="product-slider">
+					<div class="owl-stage-outer">
+						<div class="owl-stage">
+							{% set data = frappe.get_all('Item', fields=['name', 'item_name', 'description', 'image','route'],
+								filters={'show_in_website': 1}) %}
+							{%- for d in data -%}
+								{%- if d.image-%}
+								<div class="owl-item p-20">
+									<a class="" href="{{ d.route }}" ><img alt="{{ d.name }}" src="{{ d.image }}" title="{{ d.item_name }}"></a>
+								</div>
+								{%- endif -%}
+							{%- endfor -%}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="wave-svg-parent wave-svg-parent-flip">
+			<svg class="wave-svg" height="24px" preserveaspectratio="none" version="1.1" viewbox="0 0 240 24" width="240px" x="0px" y="0px">
+			<path d="M240,24V0c-51.797,0-69.883,13.18-94.707,15.59c-24.691,2.4-43.872-1.17-63.765-1.08 c-19.17,0.1-31.196,3.65-51.309,6.58C15.552,23.21,4.321,22.471,0,22.01V24H240z" fill="#ffffff" fill-opacity="0.33"></path>
+			<path d="M240,24V2.21c-51.797,0-69.883,11.96-94.707,14.16 c-24.691,2.149-43.872-1.08-63.765-1.021c-19.17,0.069-31.196,3.311-51.309,5.971C15.552,23.23,4.321,22.58,0,22.189V24h239.766H240 z" fill="#ffffff" fill-opacity="0.33"></path>
+			<path d="M240,24V3.72c-51.797,0-69.883,11.64-94.707,14.021c-24.691,2.359-43.872-3.25-63.765-3.17 c-19.17,0.109-31.196,3.6-51.309,6.529C15.552,23.209,4.321,22.47,0,22.029V24H240z" fill="#ffffff"></path></svg>
+		</div>
+	</div>
+</section>
+

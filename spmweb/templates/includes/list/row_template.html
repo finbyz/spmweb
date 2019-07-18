@@ -1,0 +1,52 @@
+
+<div class="col-md-4 col-sm-6 col-xs-12 mg-bottom">
+	<div class="web-list-item">
+		<a class="no-decoration" href="/{{ route }}">
+			{% if doctype=="Job Opening" %}
+			<div class="jobs-grid">
+				<figure class="effect-sarah">
+					<div class="text-center mt-0 pt-0">
+						<img alt="{{ doc.get(title_field) }}" title="{{ doc.get(title_field) }}" class="img-fluid" src="{{ doc.image }}">
+					</div>
+					<figcaption>
+						<h4 class="t-white link-underline">{{ doc.get(title_field) }}</h4>
+						<p>{{ doc.description }}</p>
+						
+					</figcaption>			
+				</figure>
+			</div>
+			{% else %}
+				{% if list_view_fields %}
+				<div class='row'>
+					{% for df in list_view_fields %}
+					<div class='col-sm-{{ (12/(list_view_fields|len))|int }}'>
+						{{ doc.get(df.fieldname) }}
+					</div>
+					{% endfor %}
+				</div>
+				{% else %}
+					<p>{{ doc.get(title_field) }}</p>
+				{% endif %}
+			{% endif %}
+			<!-- <div class="hover-sub">			
+				<div class="hover-div text-center">
+					<h4 class="t-white link-underline">{{ doc.get(title_field) }}</h4>
+					<div class="hover-sub-text t-white p-10 job-description">
+						{{ doc.description }}
+					</div>
+					
+				</div>
+				{%- if doc.image -%}
+				<div class="text-center mt-0 pt-0 img-hover-block">
+					<img alt="{{ doc.get(title_field) }}" title="{{ doc.get(title_field) }}" class="img-fluid" src="{{ doc.image }}">
+				</div>
+				{%- endif -%}
+			</div> -->
+		</a>
+	</div>
+</div>
+<style>
+	.container-fluid[data-path="items"] .page_content>p{
+		display: none;
+	}
+</style>

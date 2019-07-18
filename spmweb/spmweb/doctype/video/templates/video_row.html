@@ -1,0 +1,8 @@
+
+{%- if doc.video_links -%}
+	<div class="col-12 col-lg-6 category-filter all {{doc.event_category}} spm-fadeinup">
+		<!-- <a href={{ route }}>{{ title }}</a> -->
+		<div class="youtube-player" data-id="{{ doc.video_links }}"></div>
+	</div>
+{% endif %}
+<!-- this is a sample default list template -->

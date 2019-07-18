@@ -1,0 +1,61 @@
+{% if sub_title %}
+<h4 class="text-muted">{{ sub_title }}</h4>
+{% endif %}
+{% if not result -%}
+    <div class="text-muted no-results" style="min-height: 300px;">
+				<i class="mega-octicon octicon-telescope"></i>
+    		{{ no_result_message or _("Nothing to show") }}
+    </div>
+{% else %}
+    <div class="website-list" data-doctype="{{ doctype }}"
+        data-txt="{{ txt or '[notxt]' }}">
+        <!-- {% if not hide_filters -%}
+            {% include "templates/includes/list/filters.html" %}
+        {%- endif %} -->
+		{% if result_heading_template %}{% include result_heading_template %}{% endif %}
+
+    	<div class="result">
+            <div class="container">
+                
+                {% if doctype=="Events" %}
+                <div class="event-parent">
+                    <div class="content">
+                        <div class="grid">
+                            <div class="row mt-50">
+                                {% for item in result %}
+                                    {{ item }}
+                                {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    {% if not show_sidebar %}
+                    <div class="heading mt-100 text-center t-blue">
+                        <h1 class="heading-title spm-fadeinup">
+                            {{ title }}
+                        </h1>
+                        <div class="heading-line spm-fadeinup">
+                            <span class="short-line"></span> <span class="long-line"></span>
+                        </div>
+                    </div>
+                        <div class="row mt-50">
+                            {% for item in result %}
+                                {{ item }}
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        <div class="row mt-50">
+                            {% for item in result %}
+                                {{ item }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                {% endif %}
+            </div>
+    	</div>
+    	<div class="more-block {% if not show_more -%} hide {%- endif %}">
+    		<button class="btn btn-default btn-more btn-sm">{{ _("More") }}</button>
+    	</div>
+    </div>
+{%- endif %}
