@@ -1,5 +1,4 @@
     var loc = window.location.pathname;
-
     $(".nav .nav-item a.nav-active").each(function(){
       $( this ).parent( 'li' ).toggleClass('active', $(this).attr('href') == loc);
     });
@@ -140,13 +139,6 @@ $(document).ready(function(){
     );
   
    var controller = new ScrollMagic.Controller();
-
-   /*var parallaxTl = new TimelineMax();
-    parallaxTl 
-      .from(".bcg-parallax .content-wrapper" , 0.4 ,{autoAlpha:0,ease:Power0.easNone},0.4)
-      .to('.bcg',10,{y:'-35%',ease:Power0.easNone},0);*/
-    
-    
 
       //background move effect
       $(".background-inner").each(function(){

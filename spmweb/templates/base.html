@@ -33,21 +33,22 @@
 		type="image/x-icon">
     {% endblock %}
 	{%- block head -%}
-		
 		{% if head_html is defined -%}
 		{{ head_html or "" }}
 		{%- endif %}
-		<!-- <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
 		<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-		{%- for link in web_include_css %}
-		{% if link not in ["assets/frappe/css/bootstrap.css","assets/erpnext/css/website.css","assets/css/frappe-web.css"] %}
-			<link type="text/css" rel="stylesheet" href="{{ link|abs_url }}">
+		
+		{%- if theme.name != 'Standard' -%}
+		<link type="text/css" rel="stylesheet" href="/assets/spmweb/css/spm.css">
+		<link type="text/css" rel="stylesheet" href="/assets/css/login.css">
+		{%- else -%}
+		<link type="text/css" rel="stylesheet" href="/assets/css/frappe-web-b4.css">
 		{%- endif -%}
-		{%- endfor -%}
-	    {%- block head_include %}{{ head_include or "" }}{% endblock -%}
-		{%- block style %}{%- endblock -%}
+
+	
 	{%- endblock -%}
+	
 	<script type="text/javascript" >
 		window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 		ga('create', 'UA-127323417-1', 'auto');
