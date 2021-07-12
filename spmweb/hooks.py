@@ -87,6 +87,11 @@ app_license = "GPL 3.0"
 #	}
 # }
 
+doc_events = {
+    "Sales Invoice":{
+        "validate":"spmweb.api.validate"
+    }
+}
 # Scheduled Tasks
 # ---------------
 
