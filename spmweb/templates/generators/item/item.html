@@ -14,7 +14,7 @@
 		<div class="container">
 			<div class="row">
 				{% if slideshow %}
-				{% set slideshow_items = frappe.get_list(doctype="Website Slideshow Item",  fields=["image"], filters={ "parent": doc.slideshow }) %}
+				{% set slideshow_items = frappe.get_list(doctype="Website Slideshow Item",  fields=["website_image"], filters={ "parent": doc.slideshow }) %}
 				<div class="col-md-1">
 				{%- for slideshow_item in slideshow_items -%}
 					{% set image_src = slideshow_item['image'] %}
@@ -40,7 +40,7 @@
 					<h2>{{ item_name }}</h2>
 					<p class="text-muted">
 						{{ _("Item Code") }}: 
-						<span itemprop="productID">{{ variant and variant.name or name }}</span>
+						<span itemprop="productID">{{ variant and variant.name or item_code }}</span>
 					</p>
 					<br>
 					<div class="item-attribute-selectors">
